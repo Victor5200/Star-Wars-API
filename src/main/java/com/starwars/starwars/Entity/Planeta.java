@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -20,12 +22,18 @@ public class Planeta implements Serializable {
     @Id
     private String id;
 
+    @NotEmpty
+    @NotNull
     @TextIndexed
     private String nome;
 
+    @NotEmpty
+    @NotNull
     @TextIndexed
     private String clima;
 
+    @NotEmpty
+    @NotNull
     @TextIndexed
     private String terreno;
 

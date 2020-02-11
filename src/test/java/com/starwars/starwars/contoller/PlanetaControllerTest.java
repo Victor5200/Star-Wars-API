@@ -116,6 +116,26 @@ public class PlanetaControllerTest {
                                                                 Planeta.class);
         assertThat(response.getStatusCodeValue()).isEqualTo(200);
     }
+
+    @Test
+    public void deveRetornarErroAoSalvarPlaneta() {
+        Planeta planeta = new Planeta(null, "", "", "", "0");
+        ResponseEntity<Planeta> response = restTemplate.exchange("/planetas",
+                HttpMethod.POST,
+                new HttpEntity<>(planeta),
+                Planeta.class);
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
+    public void deveRetornarErro400AoSalvarPlaneta() {
+        Planeta planeta = new Planeta();
+        ResponseEntity<Planeta> response = restTemplate.exchange("/planetas",
+                HttpMethod.POST,
+                new HttpEntity<>(planeta),
+                Planeta.class);
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
 }
 
 
